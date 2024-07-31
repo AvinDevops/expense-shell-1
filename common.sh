@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#set -e
+set -e
 
 error_handler(){
     echo -e "error line number: $R $1 $N"

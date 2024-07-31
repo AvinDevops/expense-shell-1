@@ -7,13 +7,13 @@ echo "please enter password:"
 read mysql_root_password
 
 dnf install mysql-server -y &>>$LOGFILE
-VALIDATE $? "Installing mysql server"
+
 
 systemctl enable mysqld &>>$LOGFILE
-VALIDATE $? "Enabling mysql service"
+
 
 systemctl start mysqld &>>$LOGFILE
-VALIDATE $? "Starting mysql service"
+
 
 # mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
 # VALIDATE $? "Setting password for root"
@@ -22,7 +22,7 @@ mysql -h db.avinexpense.online -uroot -p${mysql_root_password} -e 'show database
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
-    VALIDATE $? "Setting password for root"
+    
 else
     echo -e "Root password is already set... $Y SKIPPING $N"
 fi
