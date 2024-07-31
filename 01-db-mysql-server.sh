@@ -6,7 +6,7 @@ source ./common.sh
 echo "please enter password:"
 read mysql_root_password
 
-dnf install mysql-server -y &>>$LOGFILE
+dnf install mysql-serverl -y &>>$LOGFILE
 
 
 systemctl enable mysqld &>>$LOGFILE
