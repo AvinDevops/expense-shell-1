@@ -16,14 +16,16 @@ dnf module enable nodejs:20 -y &>>$LOGFILE
 dnf install nodejs -y &>>$LOGFILE
 
 
-id expense &>>$LOGFILE
-if [ $? -ne 0 ]
-then
-    useradd expense
+# id expense &>>$LOGFILE
+# if [ $? -ne 0 ]
+# then
+#     useradd expense
     
-else
-    echo -e "Already expense user added...$Y SKIPPNG $N"
-fi
+# else
+#     echo -e "Already expense user added...$Y SKIPPNG $N"
+# fi
+
+useradd expense &>>$LOGFILE
 
 mkdir -p /app &>>$LOGFILE
 
