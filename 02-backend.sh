@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source ./common.sh
 
 #Entering password through prompt
 echo "Please enter DB password:"
