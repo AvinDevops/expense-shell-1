@@ -1,0 +1,29 @@
+#!/bin/bash
+
+source ./common.sh
+
+#Entering password through prompt
+echo "please enter password:"
+read mysql_root_password
+
+dnf install mysql-server -y &>>$LOGFILE
+VALIDATE $? "Installing mysql server"
+
+systemctl enable mysqld &>>$LOGFILE
+VALIDATE $? "Enabling mysql service"
+
+systemctl start mysqld &>>$LOGFILE
+VALIDATE $? "Starting mysql service"
+
+# mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
+# VALIDATE $? "Setting password for root"
+
+mysql -h 172.31.36.19 -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
+if [ $? -ne 0 ]
+then
+    mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
+    VALIDATE $? "Setting password for root"
+else
+    echo -e "Root password is already set... $Y SKIPPING $N"
+fi
+    
