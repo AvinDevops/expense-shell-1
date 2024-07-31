@@ -2,12 +2,12 @@
 
 #set -e
 
-error_handler(){
-    echo -e "error line number: $R $1 $N"
-    echo -e "error description: $R $2 $N"
-}
+# error_handler(){
+#     echo -e "error line number: $R $1 $N"
+#     echo -e "error description: $R $2 $N"
+# }
 
-trap 'error_handler ${LINENO} "$BASH_COMMAND"' ERR
+#trap 'error_handler ${LINENO} "$BASH_COMMAND"' ERR
 
 #Fetching userid, Timestamp, Scriptname, Logfile.
 USERID=$(id -u)
